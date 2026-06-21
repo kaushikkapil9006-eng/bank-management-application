@@ -14,7 +14,7 @@ public:
         cout << "Enter Account Number: ";
         cin >> accountNumber;
 
-        cin.ignore();
+        cin.ignore(); // used to discard the character
 
         cout << "Enter Customer Name: ";
         getline(cin, name);
@@ -58,8 +58,8 @@ public:
     }
 
     bool readFromFile(ifstream &in) {
-        if (!(in >> accountNumber))
-            return false;
+        if (!(in >> accountNumber)) // Try to read a value from the input stream in into accountNumber.
+            return false;// return false , if read operation fails
 
         in.ignore();
         getline(in, name);
@@ -77,14 +77,14 @@ void createAccount() {
 
     ofstream file("accounts.txt", ios::app);
 
-    acc.saveToFile(file);
+    acc.saveToFile(file); // to save the details
 
     file.close();
 
     cout << "\nAccount Created Successfully!\n";
 }
 
-void checkBalance(int accNo) {
+void checkBalance(int accNo) {//This function is used to search for an account by account number and display its details (including balance).
     ifstream file("accounts.txt");
 
     BankAccount acc;
@@ -107,13 +107,13 @@ void checkBalance(int accNo) {
 void depositMoney(int accNo, double amount) {
     ifstream file("accounts.txt");
     ofstream temp("temp.txt");
-
+// This function deposits money into a specific account.
     BankAccount acc;
     bool found = false;
 
-    while (acc.readFromFile(file)) {
-        if (acc.getAccountNumber() == accNo) {
-            acc.deposit(amount);
+     (acc.readFromFile(file)) {
+        if (acc.getAccountNumber() == accNo) { // if account number matches then 
+            acc.dewhileposit(amount);git status
             found = true;
         }
 
@@ -133,9 +133,9 @@ void depositMoney(int accNo, double amount) {
 }
 
 void withdrawMoney(int accNo, double amount) {
-    ifstream file("accounts.txt");
-    ofstream temp("temp.txt");
-
+    ifstream file("accounts.txt"); // input file stram 
+    ofstream temp("temp.txt"); // output file stream
+// above two are used to read and write the files
     BankAccount acc;
     bool found = false;
 
