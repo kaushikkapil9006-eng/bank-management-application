@@ -35,7 +35,7 @@ public:
         cout << "\nQuantity: " << quantity << endl;
     }
 
-    void saveToFile(ofstream &out) {
+    void saveToFile(ofstream &out) { //  & means pass by reference.
         out << bookId << endl;
         out << title << endl;
         out << author << endl;
@@ -43,7 +43,7 @@ public:
     }
 
     bool readFromFile(ifstream &in) {
-        if (!(in >> bookId))
+        if (!(in >> bookId)) // // tries to read an integer from a file and store in bookID
             return false;
 
         in.ignore();
@@ -51,7 +51,7 @@ public:
         getline(in, title);
         getline(in, author);
 
-        in >> quantity;
+        in >> quantity; // how much books 
         in.ignore();
 
         return true;
